@@ -24,45 +24,50 @@ Nota: ninguna de las funciones debe usar una variable externa a ella misma (salv
   otras funciones). */
 
 //FUnción crear baraja
+const getSuitName = (suitIndex) => {
+  let suit = "";
 
-let deckOfCards = [];
+  switch (suitIndex) {
+    case 0:
+      suit = "spades";
+      break;
+    case 1:
+      suit = "clubs";
+      break;
+    case 2:
+      suit = "diamonds";
+      break;
+    case 3:
+      suit = "hearts";
+      break;
+    default:
+      break;
+  }
+
+  return suit;
+};
 
 const generateDeckOfCards = () => {
-  for (suitIndex = 1; suitIndex <= 4; suitIndex++) {
-    for (numberIndex = 1; numberIndex <= 13; numberIndex++) {
-      deckOfCards.push({ suit: suitIndex, number: numberIndex, stat: false });
+  let deckOfCards = [];
+
+  for (suitIndex = 0; suitIndex <= 3; suitIndex++) {
+    for (numberIndex = 0; numberIndex <= 12; numberIndex++) {
+      deckOfCards.push({
+        suit: getSuitName(suitIndex),
+        number: numberIndex,
+        stat: false,
+      });
     }
   }
-  deckOfCards = deckOfCards.map((card) => {
-    switch (card.suit) {
-      case 1:
-        suit = "spades";
-        break;
-      case 2:
-        suit = "clubs";
-        break;
-      case 3:
-        suit = "diamonds";
-        break;
-      case 4:
-        suit = "hearts";
-        break;
-      default:
-        break;
-    }
-    return {
-      suit: suit,
-      number: card.number,
-      stat: card.stat,
-    };
-  });
+
+  return deckOfCards;
 };
-generateDeckOfCards();
+
+const deckOfCards = generateDeckOfCards();
 
 const getAleatoryCard = (cards) => {
   const aleatoryIndexCard = Math.floor(Math.random() * cards.length);
-  const cardName = `The aleatory card is: ${cards[aleatoryIndexCard]}`;
-
   return cards[aleatoryIndexCard];
 };
+
 console.log(getAleatoryCard(deckOfCards));
