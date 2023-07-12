@@ -29,16 +29,16 @@ const getSuitName = (suitIndex) => {
 
   switch (suitIndex) {
     case 0:
-      suit = "spades";
+      suit = "♠️";
       break;
     case 1:
-      suit = "clubs";
+      suit = "♣️";
       break;
     case 2:
-      suit = "diamonds";
+      suit = "♦️";
       break;
     case 3:
-      suit = "hearts";
+      suit = "♥️";
       break;
     default:
       break;
